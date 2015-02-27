@@ -3,7 +3,8 @@
 ;; License: BSD New, see LICENSE for details.
 "hyer.utils - utility functions"
 
-(import [hy.models.symbol [HySymbol]])
+(import re
+        [hy.models.symbol [HySymbol]])
 
 (defn mangle-identifier [identifier]
   "mangle identifier as hy compiler does"
@@ -25,7 +26,6 @@
 
 (defn rule->args [rule]
   "extract argument names from rule pattern"
-  (import re)
   (->>
     rule
     (.findall (re.compile "<([a-zA-Z-:]+)>"))
