@@ -6,6 +6,59 @@ Hyer - Hy enhanced routing
 Introduction
 ============
 
+Hyer is a collection of `Hy <http://hylang.org/>`_ macros
+for `flask <http://flask.pocoo.org/>`_
+
+*Okay, show me some code*
+
+From :code:`examples/hello/app.hy`
+
+.. code:: hy
+
+  (import [flask [Flask]])
+
+  (require hyer.dsl)
+
+  (defn create-app []
+    "application factory"
+    (defapplication app
+      (GET "/" index
+        "Hello world")
+      (GET "/<username>/" greating
+        (.format "Hello, {}!" username))
+      (GET "/<int:a>+<int:b>/" addition
+        (.format "{} + {} = {}" a b (+ a b)))))
+
+  (defmain [&rest args]
+    (-> create-app apply .run))
+
+This is the same code in pure python:
+
+.. code:: python
+
+  from flask import Flask
+
+  def create_app():
+      """application factory"""
+      app = Flask(__name__)
+
+      @app.route('/')
+      def index():
+          return 'Hello world'
+
+      @app.route('/<username>/')
+      def greating(username):
+          return 'Hello, {}!'.format(username)
+
+      @app.route('/<int:a>+<int:b>/')
+      def addition(a, b):
+          return '{} + {} = {}'.format(a, b, a + b)
+
+      return app
+
+
+  if __name__ == '__main__':
+      create_app().run()
 
 
 Requirements
