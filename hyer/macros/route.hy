@@ -6,7 +6,7 @@
 (import [hyer.utils [rule->args]])
 
 (defmacro defroute [app rule methods route-name &rest body]
-  "define url routing, construct argment list from rule"
+  "define url routing, construct argument list from rule"
   `(with-decorator (apply .route [~app ~rule] {'methods ~methods})
      (defn ~route-name [~@(rule->args rule)]
        ~@body)))
