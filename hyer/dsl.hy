@@ -5,3 +5,6 @@
 
 ;; routing DSL
 (require hyer.macros.route)
+
+;; application and blueprint factory
+(require hyer.macros.factory)
