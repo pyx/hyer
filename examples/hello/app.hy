@@ -13,7 +13,7 @@
   (defapplication app
     (GET "/" index
       "Hello world")
-    (GET "/<username>/" greating
+    (GET "/<username>/" greeting
       (.format "Hello, {}!" username))
     (GET "/<int:a>+<int:b>/" addition
       (.format "{} + {} = {}" a b (+ a b)))))

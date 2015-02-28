@@ -15,7 +15,7 @@ def create_app():
         return 'Hello world'
 
     @app.route('/<username>/')
-    def greating(username):
+    def greeting(username):
         return 'Hello, {}!'.format(username)
 
     @app.route('/<int:a>+<int:b>/')

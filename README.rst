@@ -24,7 +24,7 @@ From :code:`examples/hello/app.hy`
     (defapplication app
       (GET "/" index
         "Hello world")
-      (GET "/<username>/" greating
+      (GET "/<username>/" greeting
         (.format "Hello, {}!" username))
       (GET "/<int:a>+<int:b>/" addition
         (.format "{} + {} = {}" a b (+ a b)))))
@@ -47,7 +47,7 @@ This is the same code in pure python:
           return 'Hello world'
 
       @app.route('/<username>/')
-      def greating(username):
+      def greeting(username):
           return 'Hello, {}!'.format(username)
 
       @app.route('/<int:a>+<int:b>/')
