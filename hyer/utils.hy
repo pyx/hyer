@@ -4,7 +4,33 @@
 "hyer.utils - utility functions"
 
 (import re
+        [hy.macros [_wrap_value]]
         [hy.models.symbol [HySymbol]])
+
+(defn list->args/kwargs [arg-list]
+  "return a tuple of [args] and {kw: arg} parsed from arg-list
+
+  e.g
+  => (list->args/kwargs [1 2 :foo 8 3 :bar 9])
+  ([1 2 3], {:foo 8 :bar 9})
+  "
+  (def args [])
+  (def kwargs {})
+  (def key nil)
+  (for [arg arg-list]
+       (unless (nil? key)
+         (assoc kwargs key arg)
+         ; done with key, reset
+         (setv key nil)
+         (continue))
+       (if (keyword? arg)
+         ; got a key, needs a value
+         (setv key (-> arg name mangle-identifier))
+         ; else, save it into args list
+         (.append args arg)))
+  (unless (nil? key)
+    (raise (KeyError (.format "keyword {!r} missing a value" key))))
+  (, (_wrap_value args) (_wrap_value kwargs)))
 
 (defn mangle-identifier [identifier]
   "mangle identifier as hy compiler does"

@@ -8,3 +8,6 @@
 
 ;; application and blueprint factory
 (require hyer.macros.factory)
+
+;; utility macros
+(require hyer.macros.utils)
