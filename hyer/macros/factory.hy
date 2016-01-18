@@ -5,14 +5,18 @@
 
 (defmacro defapplication [app &rest body]
   "define application object"
-  `(do
-     (def ~app (Flask --name--))
-     (doto ~app ~@body)
-     ~app))
+  (with-gensyms [Flask]
+    `(do
+       (import [flask [Flask :as ~Flask]])
+       (def ~app (~Flask --name--))
+       (doto ~app ~@body)
+       ~app)))
 
 (defmacro defblueprint [bp name &rest body]
   "define blueprint object"
-  `(do
-     (def ~bp (Blueprint ~name --name--))
-     (doto ~bp ~@body)
-     ~bp))
+  (with-gensyms [Blueprint]
+    `(do
+       (import [flask [Blueprint :as ~Blueprint]])
+       (def ~bp (~Blueprint ~name --name--))
+       (doto ~bp ~@body)
+       ~bp)))

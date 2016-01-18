@@ -4,8 +4,6 @@
 ;; License: BSD New, see LICENSE for details.
 "Hello world example"
 
-(import [flask [Flask]])
-
 (require hyer.dsl)
 
 (defn create-app []
