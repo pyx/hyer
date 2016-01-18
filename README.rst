@@ -15,8 +15,6 @@ From :code:`examples/hello/app.hy`
 
 .. code:: hy
 
-  (import [flask [Flask]])
-
   (require hyer.dsl)
 
   (defn create-app []
