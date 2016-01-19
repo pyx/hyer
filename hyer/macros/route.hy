@@ -5,20 +5,20 @@
 
 (import [hyer.utils [rule->args]])
 
-(defmacro defroute [app rule methods route-name &rest body]
+(defmacro defroute [app route-name rule methods &rest body]
   "define url routing, construct argument list from rule"
   `(with-decorator (apply .route [~app ~rule] {'methods ~methods})
      (defn ~route-name [~@(rule->args rule)]
        ~@body)))
 
-(defmacro GET [app rule route-name &rest body]
+(defmacro GET [app route-name rule &rest body]
   "define GET handler"
-  `(defroute ~app ~rule '[GET] ~route-name ~@body))
+  `(defroute ~app ~route-name ~rule '[GET] ~@body))
 
-(defmacro POST [app rule route-name &rest body]
+(defmacro POST [app route-name rule &rest body]
   "define POST handler"
-  `(defroute ~app ~rule '[POST] ~route-name ~@body))
+  `(defroute ~app ~route-name ~rule '[POST] ~@body))
 
-(defmacro GET/POST [app rule route-name &rest body]
+(defmacro GET/POST [app route-name rule &rest body]
   "define GET/POST handler"
-  `(defroute ~app ~rule '[GET POST] ~route-name ~@body))
+  `(defroute ~app ~route-name ~rule '[GET POST] ~@body))

@@ -9,11 +9,11 @@
 (defn create-app []
   "application factory"
   (defapplication app
-    (GET "/" index
+    (GET index "/"
       "Hello world")
-    (GET "/<username>/" greeting
+    (GET greeting "/<username>/"
       (.format "Hello, {}!" username))
-    (GET "/<int:a>+<int:b>/" addition
+    (GET addition "/<int:a>+<int:b>/"
       (.format "{} + {} = {}" a b (+ a b)))))
 
 (defmain [&rest args]
