@@ -12,11 +12,11 @@
        (doto ~app ~@body)
        ~app)))
 
-(defmacro defblueprint [bp name &rest body]
+(defmacro defblueprint [bp &rest body]
   "define blueprint object"
   (with-gensyms [Blueprint]
     `(do
        (import [flask [Blueprint :as ~Blueprint]])
-       (def ~bp (~Blueprint ~name --name--))
+       (def ~bp (~Blueprint ~(string bp) --name--))
        (doto ~bp ~@body)
        ~bp)))
