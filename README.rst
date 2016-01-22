@@ -19,7 +19,7 @@ From :code:`examples/hello/app.hy`
 
   (defn create-app []
     "application factory"
-    (defapplication app
+    (defapplication app []
       (GET index "/"
         "Hello world")
       (GET greeting "/<username>/"
