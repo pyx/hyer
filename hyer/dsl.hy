@@ -11,3 +11,17 @@
 
 ;; utility macros
 (require hyer.macros.utils)
+
+;; helper functions to streamline factory macros
+
+(defn register-blueprint [app bp &rest args &kwargs kwargs]
+  (apply app.register-blueprint (cons bp args) kwargs))
+
+(defn config-from-envvar [app config-envvar &rest args &kwargs kwargs]
+  (apply app.config.from-envvar (cons config-filename args) kwargs))
+
+(defn config-from-pyfile [app config-filename &rest args &kwargs kwargs]
+  (apply app.config.from-pyfile (cons config-filename args) kwargs))
+
+(defn config-from-object [app config-object &rest args &kwargs kwargs]
+  (apply app.config.from-object (cons config-object args) kwargs))
