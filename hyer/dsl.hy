@@ -9,8 +9,27 @@
 ;;; application and blueprint factory
 (require hyer.macros.factory)
 
+;;; macros for flask framework
+(require hyer.macros.flask)
+
+;;; macros for flask-login
+(require hyer.macros.flask_login)
+
+;;; macros for flask-sqlalchemy
+(require hyer.macros.flask_sqlalchemy)
+
+;;; macros for flask-wtf
+(require hyer.macros.flask_wtf)
+
 ;;; utility macros
 (require hyer.macros.utils)
+
+(defmacro import-for-hyer-dsl []
+  `(do
+     (import-flask)
+     (import-flask-login)
+     (import-flask-sqlalchemy)
+     (import-flask-wtf)))
 
 ;;; helper functions to streamline factory macros
 
