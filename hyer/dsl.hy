@@ -1,18 +1,18 @@
-;; -*- coding: utf-8 -*-
-;; Copyright (c) 2014-2015, Philip Xu <pyx@xrefactor.com>
-;; License: BSD New, see LICENSE for details.
+;;; -*- coding: utf-8 -*-
+;;; Copyright (c) 2014-2016, Philip Xu <pyx@xrefactor.com>
+;;; License: BSD New, see LICENSE for details.
 "hyer.dsl - DSL"
 
-;; routing DSL
+;;; routing DSL
 (require hyer.macros.route)
 
-;; application and blueprint factory
+;;; application and blueprint factory
 (require hyer.macros.factory)
 
-;; utility macros
+;;; utility macros
 (require hyer.macros.utils)
 
-;; helper functions to streamline factory macros
+;;; helper functions to streamline factory macros
 
 (defn register-blueprint [app bp &rest args &kwargs kwargs]
   (apply app.register-blueprint (cons bp args) kwargs))

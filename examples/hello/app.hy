@@ -1,7 +1,7 @@
 #!/usr/bin/env hy
-;; -*- coding: utf-8 -*-
-;; Copyright (c) 2014-2015, Philip Xu <pyx@xrefactor.com>
-;; License: BSD New, see LICENSE for details.
+;;; -*- coding: utf-8 -*-
+;;; Copyright (c) 2014-2016, Philip Xu <pyx@xrefactor.com>
+;;; License: BSD New, see LICENSE for details.
 "Hello world example"
 
 (require hyer.dsl)
