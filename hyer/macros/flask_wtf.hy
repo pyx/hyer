@@ -12,9 +12,13 @@
      (import [flask [render-template]])))
 
 (defmacro process-form [form template &rest actions]
+  (when (symbol? form)
+    (setv form `(~form)))
+  (when (string? template)
+    (setv template `(~template)))
   (with-gensyms [response]
-    `(let [[form (~form)]
+    `(let [[form ~form]
           [~response nil]]
        (when (.validate-on-submit form)
          (setv ~response (do ~@actions)))
-       (or ~response (render-template ~template :form form)))))
+       (or ~response (render-template ~@template :form form)))))
