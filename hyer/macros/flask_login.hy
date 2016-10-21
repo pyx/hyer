@@ -10,7 +10,7 @@
 (defmacro import-flask-login []
   `(do
      (import [flask [current-app]])
-     (import [flask.ext.login [current-user]])))
+     (import [flask-login [current-user]])))
 
 ;;; use this macro instead of flask_login.login_required decorator to work
 ;;; with GET, GET/POST routing macros
